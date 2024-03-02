@@ -1,0 +1,38 @@
+/* Dependencies
+
+pnpm add -D eslint prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-prettier
+
+*/
+
+{
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended",
+        "next/core-web-vitals"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "tsconfig.json",
+        "tsconfigRootDir": "./",
+        "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint/eslint-plugin"],
+    "root": true,
+    "env": { "node": true },
+    "ignorePatterns": [".eslintrc.*", "*.config.*", "node_modules/*"],
+    "rules": {
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto",
+                "tabWidth": 4,
+                "quotes": "double"
+            }
+        ],
+        // "no-console": ["warn", { "allow": ["error"] }]
+    }
+}

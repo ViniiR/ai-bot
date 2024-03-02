@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: ai-bot
+        expose:
+            - 3000
+        ports:
+            - 5000:3000
+        command: npm run dev
