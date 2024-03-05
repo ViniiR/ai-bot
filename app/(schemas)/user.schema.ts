@@ -3,7 +3,7 @@ import * as yup from "yup";
 export const userSchema = yup.object().shape({
     userName: yup
         .string()
-        .min(2, "Username too short")
+        .min(3, "Username too short")
         .trim()
         .required("Username is a required field"),
     password: yup

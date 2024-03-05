@@ -4,6 +4,7 @@ import { UserData } from "@/types/types";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FormikProps } from "formik";
 import FormSection from "./FormSection.bs";
+import Link from "next/link";
 
 interface FormProps {
     children?: JSX.Element | JSX.Element[] | string;
@@ -32,11 +33,24 @@ function Form(props: FormProps): JSX.Element {
                 value="password"
                 label="Password"
             ></FormSection>
+            <p className="w-full text-gray-900 flex h-5 items-center">
+                {props.formik.status}
+            </p>
             <input
                 type="submit"
                 value={props.text}
                 className="btn btn-primary w-full"
             />
+            <Link
+                className="no-underline text-sm w-full h-10 flex items-center justify-center text-blue-600 hover:underline decoration-blue-500"
+                href={
+                    props.text?.toLowerCase() === "login" ? "/signup" : "/login"
+                }
+            >
+                {props.text?.toLowerCase() === "login"
+                    ? "Don't have an account? Sign Up"
+                    : "Already have an account? Log In"}
+            </Link>
         </form>
     );
 }

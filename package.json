@@ -15,6 +15,7 @@
         "react-dom": "^18"
     },
     "devDependencies": {
+        "@prisma/client": "^5.10.2",
         "@types/bootstrap": "^5.2.10",
         "@types/jest": "^29.5.12",
         "@types/node": "^20",

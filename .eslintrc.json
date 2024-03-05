@@ -32,7 +32,7 @@ pnpm add -D eslint prettier @typescript-eslint/eslint-plugin @typescript-eslint/
                 "tabWidth": 4,
                 "quotes": "double"
             }
-        ],
+        ]
         // "no-console": ["warn", { "allow": ["error"] }]
     }
 }

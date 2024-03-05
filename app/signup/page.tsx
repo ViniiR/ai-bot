@@ -4,18 +4,10 @@ import { UserData } from "@/types/types";
 import Form from "../(components)/Form.bs";
 import { useFormik } from "formik";
 import { userSchema } from "../(schemas)/user.schema";
+import submitForm from "../(actions)/submitForm";
 
 interface SignupPageProps {
     children?: JSX.Element | JSX.Element[] | string;
-}
-
-async function fetchFormData(data: UserData) {
-    //wrong //FIXME:
-    const res = await fetch(`signup/api`, {
-        method: "POST",
-        body: JSON.stringify(data),
-    });
-    return res;
 }
 
 function SignupPage(props: SignupPageProps): JSX.Element {
@@ -26,11 +18,15 @@ function SignupPage(props: SignupPageProps): JSX.Element {
         },
         validateOnChange: true,
         validationSchema: userSchema,
-        onSubmit: async (formData, { setStatus, setErrors }) => {
-            const res = await fetchFormData(formData);
-            console.log(res);
-            setErrors({ userName: "", password: "" });
-            setStatus({ userName: "", password: "" });
+        onSubmit: async (formData, { setStatus }) => {
+            const res: { message: string; status: number } = JSON.parse(
+                await submitForm(formData),
+            );
+            if (res.status > 199 && res.status < 300) {
+                setStatus(res.message);
+            } else {
+                setStatus(res.message);
+            }
         },
     });
 

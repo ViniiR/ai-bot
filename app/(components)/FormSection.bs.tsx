@@ -2,6 +2,7 @@
 
 import { UserData } from "@/types/types";
 import { FormikProps } from "formik";
+import { ChangeEvent } from "react";
 
 interface FormSectionProps {
     children?: JSX.Element | JSX.Element[] | string;
@@ -22,6 +23,10 @@ function FormSection(props: FormSectionProps): JSX.Element {
         props.label.toLowerCase() === "username"
             ? props.formik.errors.userName
             : props.formik.errors.password;
+    function handleChange(e: ChangeEvent) {
+        props.formik.handleChange(e);
+        props.formik.setStatus("");
+    }
     return (
         <section className="flex items-center gap-1 flex-col">
             <section className="h-full w-full flex gap-1 items-center">
@@ -30,10 +35,7 @@ function FormSection(props: FormSectionProps): JSX.Element {
                     className="form-control border"
                     type="text"
                     name={props.value}
-                    onChange={(e) => {
-                        props.formik.handleChange(e);
-                        props.formik.setErrors({ userName: "", password: "" });
-                    }}
+                    onChange={handleChange}
                     id={props.value}
                 />
             </section>
