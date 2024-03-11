@@ -3,20 +3,24 @@ import { useFormik } from "formik";
 import Form from "../(components)/Form.bs";
 import { userSchema } from "../(schemas)/user.schema";
 import { UserData } from "@/types/types";
+import { submitLoginForm } from "../(actions)/submitForm";
+import { useRouter } from "next/navigation";
 
-interface LoginPageProps {
-    children?: JSX.Element | JSX.Element[] | string;
-}
-
-function LoginPage(props: LoginPageProps): JSX.Element {
+function LoginPage(): JSX.Element {
+    const router = useRouter();
     const formik = useFormik<UserData>({
         initialValues: {
             userName: "",
             password: "",
         },
         validationSchema: userSchema,
-        onSubmit: async (formData, { setStatus, setErrors }) => {
-            console.log(formData);
+        onSubmit: async (formData, { setStatus }) => {
+            const isValid = await submitLoginForm(formData);
+            if (isValid) {
+                router.push("/chat");
+            } else {
+                setStatus("Username or Password invalid");
+            }
         },
     });
 

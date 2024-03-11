@@ -1,11 +1,15 @@
-interface ChatPageProps {
-    children?: JSX.Element | JSX.Element[] | string;
-}
+import { redirect } from "next/navigation";
+import { checkIfSessionIsValid } from "../(actions)/auth.actions";
 
-function ChatPage(props: ChatPageProps): JSX.Element {
+async function ChatPage() {
+    const isValidSession = await checkIfSessionIsValid();
+    if (!isValidSession) {
+        redirect("/signup");
+    }
     return (
         <main className="w-full h-10">
             <main>teste chat</main>
+            make this
         </main>
     );
 }

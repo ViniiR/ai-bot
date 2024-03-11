@@ -4,13 +4,11 @@ import { UserData } from "@/types/types";
 import Form from "../(components)/Form.bs";
 import { useFormik } from "formik";
 import { userSchema } from "../(schemas)/user.schema";
-import submitForm from "../(actions)/submitForm";
+import submitSignUpForm from "../(actions)/submitForm";
+import { createSession } from "../(actions)/auth.actions";
+import { redirect } from "next/navigation";
 
-interface SignupPageProps {
-    children?: JSX.Element | JSX.Element[] | string;
-}
-
-function SignupPage(props: SignupPageProps): JSX.Element {
+function SignupPage(): JSX.Element {
     const formik = useFormik<UserData>({
         initialValues: {
             userName: "",
@@ -20,10 +18,19 @@ function SignupPage(props: SignupPageProps): JSX.Element {
         validationSchema: userSchema,
         onSubmit: async (formData, { setStatus }) => {
             const res: { message: string; status: number } = JSON.parse(
-                await submitForm(formData),
+                await submitSignUpForm(formData),
             );
+            try {
+                res.message = JSON.parse(res.message);
+            } catch (err) {
+                console.error(err);
+            }
             if (res.status > 199 && res.status < 300) {
                 setStatus(res.message);
+                const isSession = await createSession(formData.userName);
+                if (isSession) {
+                    redirect("/chat");
+                }
             } else {
                 setStatus(res.message);
             }

@@ -33,7 +33,7 @@ function Form(props: FormProps): JSX.Element {
                 value="password"
                 label="Password"
             ></FormSection>
-            <p className="w-full text-gray-900 flex h-5 items-center">
+            <p className="w-full text-indigo-900 flex h-5 items-center">
                 {props.formik.status}
             </p>
             <input

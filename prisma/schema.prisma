@@ -19,4 +19,5 @@ model Users {
     updatedAt DateTime @updatedAt
     userName String @unique
     password String
+    secretKey String?
 }
