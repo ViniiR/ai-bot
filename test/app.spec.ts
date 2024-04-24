@@ -5,7 +5,6 @@ import {
 } from "@/app/(actions)/auth.actions";
 import submitSignUpForm from "@/app/(actions)/submitForm";
 import { UserData } from "@/types/types";
-import { Archivo_Narrow } from "next/font/google";
 
 jest.mock("../app/(actions)/auth.actions", () => ({
     ...jest.requireActual("../app/(actions)/auth.actions"),

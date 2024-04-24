@@ -6,9 +6,10 @@ import { useFormik } from "formik";
 import { userSchema } from "../(schemas)/user.schema";
 import submitSignUpForm from "../(actions)/submitForm";
 import { createSession } from "../(actions)/auth.actions";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 function SignupPage(): JSX.Element {
+    const router = useRouter();
     const formik = useFormik<UserData>({
         initialValues: {
             userName: "",
@@ -29,7 +30,7 @@ function SignupPage(): JSX.Element {
                 setStatus(res.message);
                 const isSession = await createSession(formData.userName);
                 if (isSession) {
-                    redirect("/chat");
+                    router.push("/");
                 }
             } else {
                 setStatus(res.message);
