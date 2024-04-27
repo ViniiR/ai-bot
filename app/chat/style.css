@@ -1,0 +1,111 @@
+:root {
+    --dark-darker: #656256;
+    --dark-mid: #686963;
+    --dark-light: #5B605b;
+    --dark-contrast: #545454;
+
+    --light-bright: #E8EBd0;
+    --light-mid: #e0e0bf;
+    --light-light: #F1EDE9;
+    --light-contrast: #F2EFb0;
+
+    --text-light: black;
+    --text-dark: white;
+}
+
+.light-text * {
+    color: var(--text-light);
+}
+
+.dark-text * {
+    color: var(--text-dark);
+}
+
+.dark-1 {
+    background-color: var(--dark-darker);
+    color: var(--text-dark);
+}
+
+.light-1 {
+    background-color: var(--light-bright);
+    color: var(--text-light);
+}
+
+.dark-2 {
+    background-color: var(--dark-mid);
+    color: var(--text-dark);
+}
+
+.light-2 {
+    background-color: var(--light-mid);
+    color: var(--text-light);
+}
+
+.dark-3 {
+    background-color: var(--dark-light);
+    color: var(--text-dark);
+}
+
+.light-3 {
+    background-color: var(--light-light);
+    color: var(--text-light);
+}
+
+.dark-4 {
+    background-color: var(--dark-contrast);
+    color: var(--text-dark);
+}
+
+.light-4 {
+    background-color: var(--light-contrast);
+    color: var(--text-light);
+}
+
+.theme-switch {
+    position: relative;
+    padding: 0px 5px;
+}
+
+.main-header:has(#color-switch:checked) .theme-switch::before {
+    transform: translateX(calc(-100% - 4px));
+    background-color: var(--light-light);
+    background-image: url("../\(assets\)/bx-sun.svg");
+}
+
+.main-header:has(#color-switch:checked) .theme-switch::after {
+    background-color: var(--light-mid);
+}
+
+.theme-switch::before {
+    content: "";
+    pointer-events: auto;
+    background-image: url("../\(assets\)/bx-moon.svg");
+    background-size: cover;
+    background-position: center center;
+    right: 2px;
+    position: absolute;
+    border-radius: 50px;
+    width: 18px;
+    height: 18px;
+    z-index: 2;
+    background-color: var(--dark-darker);
+    transition: transform .5s linear;
+}
+
+.theme-switch::after {
+    content: "";
+    pointer-events: auto;
+    border-radius: 50px;
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    z-index: 1;
+    background-color: var(--dark-mid);
+    border: 1px solid var(--dark-light);
+    /* border-top: 1px solid var(--dark-light); */
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
+}
+
+.dark-scroll {
+    scrollbar-color: var(--dark-mid) var(--dark-contrast);
+}

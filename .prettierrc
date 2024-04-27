@@ -6,5 +6,6 @@
     "bracketSpacing": true,
     "printWidth": 80,
     "useTabs": false,
-    "semi": true
+    "semi": true,
+    "jsxBracketSameLine": false
 }
