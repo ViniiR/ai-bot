@@ -1,5 +1,6 @@
 "use client";
 import { useChat } from "ai/react";
+import HoverText from "../(components)/HoverText";
 import Msg from "../(components)/Message";
 import { useContext, useState, createContext, useRef, useEffect } from "react";
 import Image from "next/image";
@@ -30,7 +31,7 @@ export default function Chat() {
                 className={`h-screen w-screen flex flex-col justify-between ${theme ? "dark-1 dark-text" : "light-1 light-text"}`}
             >
                 <header className="main-header text-white flex-row flex gap-1 p-2 bg-darker items-center tems-center w-screen h-12 justify-between md:h-20">
-                    <div className="flex items-center w-max">
+                    <div className="flex items-center w-max cursor-pointer text-hover-parent relative">
                         <Image
                             src={VChatLogo}
                             className="w-16 h-full md:w-20"
@@ -39,8 +40,12 @@ export default function Chat() {
                         <span className=" h-full w-10 font-bold text-lg flex items-center justify-center">
                             - 0.1
                         </span>
+                        <HoverText
+                            content="Menu"
+                            className={`absolute top-10 left-10 text-hover ${theme ? "dark-2" : "light-2"}`}
+                        ></HoverText>
                     </div>
-                    <div className="cursor-pointer w-11 theme-switch h-full flex items-center justify-center">
+                    <div className="cursor-pointer w-11 theme-switch h-full flex items-center justify-center text-hover-parent">
                         <input
                             type="checkbox"
                             onChange={() => {
@@ -54,6 +59,10 @@ export default function Chat() {
                             name="color-switch"
                             id="color-switch"
                         />
+                        <HoverText
+                            content="Switch theme"
+                            className={`absolute top-10 right-6 text-hover w-max ${theme ? "dark-2" : "light-2"}`}
+                        ></HoverText>
                     </div>
                 </header>
                 <main
@@ -61,7 +70,7 @@ export default function Chat() {
                 >
                     <main
                         ref={messagesParentRef}
-                        className={`p-2 w-full h-full overflow-y-scroll gap-2 flex flex-col items-center ${theme ? "dark-scroll" : ""}`}
+                        className={`p-2 w-full h-full overflow-y-scroll gap-1 flex flex-col items-center ${theme ? "dark-scroll" : ""}`}
                     >
                         {messages.map((msg) => (
                             <Msg
@@ -70,7 +79,7 @@ export default function Chat() {
                                 bearer={msg.role === "user" ? "You" : "V-AI"}
                                 key={msg.id}
                                 className="md:max-w-2xl"
-                                time={`${msg.createdAt?.getHours()}:${msg.createdAt?.getMinutes().toString().padStart(2, "0")}`}
+                                time={`${msg.createdAt?.getHours().toString().padStart(2, "0")}:${msg.createdAt?.getMinutes().toString().padStart(2, "0")}`}
                                 content={msg.content}
                             ></Msg>
                         ))}
@@ -82,7 +91,9 @@ export default function Chat() {
                                 theme={theme ? "dark-2" : "light-2"}
                                 content={err.message}
                                 isOwner={false}
-                                bearer={"Unexpected Error occurred"}
+                                bearer={
+                                    "Unexpected Error occurred, try again later."
+                                }
                             ></Msg>
                         )}
                     </main>
@@ -94,6 +105,7 @@ export default function Chat() {
                             className="w-full md:max-w-2xl h-full"
                         >
                             <input
+                                autoComplete="off"
                                 onChange={handleInputChange}
                                 value={input}
                                 type="text"

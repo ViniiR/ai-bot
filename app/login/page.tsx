@@ -25,7 +25,7 @@ function LoginPage(): JSX.Element {
     });
 
     return (
-        <main className="w-screen h-screen bg-zinc-800 grid place-content-center">
+        <main className="w-screen h-screen bg-zinc-800 grid place-items-center">
             <Form text="Login" formik={formik}></Form>
         </main>
     );

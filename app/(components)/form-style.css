@@ -1,0 +1,5 @@
+.phone-media-form {
+    @media (min-width: 420px) and (max-width: 600px) {
+        max-width: 80%;
+    }
+}

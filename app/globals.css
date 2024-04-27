@@ -36,3 +36,11 @@ body, * {
         text-wrap: balance;
     }
 }
+
+.text-hover-parent:hover .text-hover {
+    display: flex;
+}
+
+.text-hover-sibling:hover + .text-hover {
+    display: flex;
+}

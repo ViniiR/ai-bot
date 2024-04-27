@@ -17,7 +17,7 @@ export default function Message(props: MessageProps) {
             className={`rounded h-max w-full flex flex-col gap-2 p-2 text-wrap break-words ${props.theme} ${props.className}`}
         >
             <p className={"flex rounded p-2 justify-between w-full "}>
-                <span>{props.bearer}</span>
+                <strong className="font-semibold">{props.bearer}</strong>
                 <span>{props.time?.toString()}</span>
             </p>
             <p className={"p-2 rounded "}>
