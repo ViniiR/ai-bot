@@ -1,7 +1,6 @@
 "use client";
 
 import { UserData } from "@/types/types";
-import HoverText from "./HoverText";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FormikProps } from "formik";
 import FormSection from "./FormSection.bs";
@@ -17,11 +16,18 @@ interface FormProps {
 function Form(props: FormProps): JSX.Element {
     return (
         <form
-            className="custom-form bg-zinc-200 w-full max-w-72 phone-media-form rounded p-4 flex flex-col items-center justify-around gap-3"
+            className="custom-form bg-zinc-200 w-full media-form rounded p-4 flex flex-col items-center justify-around gap-3 shadow-black shadow-sm relative overflow-hidden"
             noValidate
             method="POST"
             onSubmit={props.formik.handleSubmit}
         >
+            {props.text?.toLowerCase() === "login" ? (
+                <div className="absolute rotate-45 right-neg-top font-bold w-56 h-6 text-center bg-green-400">
+                    Glad you&apos;re back!
+                </div>
+            ) : (
+                <div className="hidden"></div>
+            )}
             <section className="flex items-center justify-center h-20">
                 <h1 className="font-bold">{props.text}</h1>
             </section>
@@ -35,13 +41,13 @@ function Form(props: FormProps): JSX.Element {
                 value="password"
                 label="Password"
             ></FormSection>
-            <p className="w-full text-indigo-900 flex h-5 items-center">
+            <p className="w-full text-indigo-800 flex h-5 items-center justify-center">
                 {props.formik.status}
             </p>
             <input
                 type="submit"
                 value={props.text}
-                className="btn btn-primary w-full"
+                className="btn btn-primary w-full shadow-black shadow-sm"
             />
             <Link
                 className="no-underline text-sm w-full h-10 flex items-center justify-center text-blue-600 hover:underline decoration-blue-500 "
@@ -53,6 +59,7 @@ function Form(props: FormProps): JSX.Element {
                     ? "Don't have an account? Sign Up"
                     : "Already have an account? Log In"}
             </Link>
+            <div id="background-image" className="hidden"></div>
         </form>
     );
 }

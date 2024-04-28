@@ -1,5 +1,92 @@
-.phone-media-form {
-    @media (min-width: 420px) and (max-width: 600px) {
-        max-width: 80%;
+@media (min-width: 288px) {
+    .media-form {
+        max-width: 288px;
+        width: 80%;
     }
 }
+
+@media (min-width: 400px) {
+    .media-form {
+        max-width: 350px;
+        width: 80%;
+    }
+}
+
+@media (min-width: 500px) {
+    .media-form {
+        max-width: 500px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .media-form {
+        max-width: 750px;
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: repeat(7, auto);
+        height: 70%;
+    }
+    #background-image {
+        background-image: url("../\(assets\)/pexels-mountain.webp");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-color: black;
+        display: inline-block;
+        position: absolute;
+        height: 120%;
+        width: 100%;
+        grid-column: 2;
+        grid-row: 1 / 7;
+    }
+    .media-form > *:not(#background-image) {
+        grid-column: 1;
+    }
+}
+
+.right-neg-top {
+    right: -55px;
+    top: 45px;
+    z-index: 2;
+    animation: text-floating infinite 15s ;
+}
+
+@keyframes text-floating {
+    from {
+        font-size: .9rem;
+    }
+    10% {
+        font-size: .91rem;
+    }
+    20% {
+        font-size: .92rem;
+    }
+    30% {
+        font-size: .93rem;
+    }
+    40% {
+        font-size: .94rem;
+    }
+    50% {
+        font-size: .95rem;
+    }
+    60% {
+        font-size: .94rem;
+    }
+    70% {
+        font-size: .94rem;
+    }
+    80% {
+        font-size: .93rem;
+    }
+    90% {
+        font-size: .92rem;
+    }
+    100% {
+        font-size: .91rem;
+    }
+    to {
+        font-size: .9rem;
+    }
+}
+

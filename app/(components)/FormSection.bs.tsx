@@ -1,14 +1,15 @@
 "use client";
 
-import UserIcon from "../(assets)/bxs-user.svg";
-import HoverText from "./HoverText";
-import ClosedPassword from "../(assets)/lock_3917642.svg";
-import OpenPassword from "../(assets)/unlock_3917652.svg";
 import { UserData } from "@/types/types";
-import Image from "next/image";
 import { FormikProps } from "formik";
 import { ChangeEvent, MouseEvent, useState } from "react";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import UserIcon from "../(assets)/bxs-user.svg";
+import HoverText from "./HoverText";
+import OpenPassword from "../(assets)/eye-crossed_3917021.svg";
+import ClosedPassword from "../(assets)/eye_3917052.svg";
+import Image from "next/image";
+import "./form-style.css";
 
 interface FormSectionProps {
     children?: JSX.Element | JSX.Element[] | string;
@@ -55,7 +56,7 @@ function FormSection(props: FormSectionProps): JSX.Element {
         <section className="flex items-center gap-1 flex-col w-full">
             <section className="h-full items-center relative w-full flex gap-1 border-b-2 border-b-black ">
                 <input
-                    className="w-full p-2 bg-zinc-200 "
+                    className="w-full p-2 bg-zinc-200 rounded-tl-sm "
                     type={
                         props.value === "password" && isLocked
                             ? "password"

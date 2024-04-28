@@ -6,7 +6,9 @@ import { useContext, useState, createContext, useRef, useEffect } from "react";
 import Image from "next/image";
 import VChatLogo from "../(assets)/vchataifinal.svg";
 
-const ThemeContext = createContext(localStorage.getItem("theme") === "dark");
+export const ThemeContext = createContext(
+    localStorage.getItem("theme") === "dark",
+);
 
 export default function Chat() {
     const [err, setErr] = useState<Error | null>(null);
@@ -22,6 +24,7 @@ export default function Chat() {
     useEffect(() => {
         const element = messagesParentRef.current;
         if (!element) return;
+
         element.scrollTop = element.scrollHeight - element.clientHeight;
     }, [messages]);
 
@@ -30,7 +33,7 @@ export default function Chat() {
             <main
                 className={`h-screen w-screen flex flex-col justify-between ${theme ? "dark-1 dark-text" : "light-1 light-text"}`}
             >
-                <header className="main-header text-white flex-row flex gap-1 p-2 bg-darker items-center tems-center w-screen h-12 justify-between md:h-20">
+                <header className="main-header text-white flex-row flex gap-1 p-2 bg-darker items-center tems-center w-screen h-12 justify-between md:h-20 lg:p-4">
                     <div className="flex items-center w-max cursor-pointer text-hover-parent relative">
                         <Image
                             src={VChatLogo}
