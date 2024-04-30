@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
 :root {
     --foreground-rgb: 0, 0, 0;
@@ -25,6 +26,7 @@ body, * {
             rgb(var(--background-end-rgb))
         )
         rgb(var(--background-start-rgb)); */
+    min-width: 0;
     outline: none;
     padding: 0;
     margin: 0;
@@ -43,4 +45,33 @@ body, * {
 
 .text-hover-sibling:hover + .text-hover {
     display: flex;
+}
+
+.main-title {
+    font-family: "Archivo Black", sans-serif;
+    font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+    .max-w-screen-third {
+        max-width: 100%;
+        padding: 0 20%;
+    }
+    .max-w-msg {
+        max-width: 700px;
+    }
+}
+
+@media (min-width: 999px) {
+    .min-desktop-h {
+        min-height: 60%;
+    }
+}
+
+.child-p-2 > * {
+    padding: 8px;
+}
+
+.gutter-true {
+    scrollbar-gutter: stable;
 }

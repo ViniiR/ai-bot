@@ -1,3 +1,5 @@
+"use client";
+
 import { JSONValue } from "ai";
 import Markdown from "react-markdown";
 
@@ -8,21 +10,20 @@ interface MessageProps {
     bearer: string;
     time?: JSONValue;
     theme: string;
-    className: string;
 }
 
 export default function Message(props: MessageProps) {
     return (
-        <p
-            className={`rounded h-max w-full flex flex-col gap-2 p-2 text-wrap break-words ${props.theme} ${props.className}`}
+        <span
+            className={`rounded h-max w-full flex flex-col gap-2 p-2 text-wrap break-words max-w-msg  ${props.theme} `}
         >
-            <p className={"flex rounded p-2 justify-between w-full "}>
+            <span className={"flex rounded p-2 justify-between w-full "}>
                 <strong className="font-semibold">{props.bearer}</strong>
                 <span>{props.time?.toString()}</span>
-            </p>
-            <p className={"p-2 rounded "}>
+            </span>
+            <span className={"p-2 rounded "}>
                 <Markdown>{props.content}</Markdown>
-            </p>
-        </p>
+            </span>
+        </span>
     );
 }

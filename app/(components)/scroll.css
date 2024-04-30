@@ -1,0 +1,30 @@
+
+@media(prefers-reduced-motion) {
+    .hidden-scroll {
+        transition: none;
+    }
+}
+
+.show-scroll {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    filter: blur(0) !important;
+}
+
+.hidden-scroll {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-50%);
+    transition: opacity 2s, transform 1.5s ease-out, filter .5s;
+    @media (min-width: 999px) {
+        max-width: 60%;
+    }
+}
+
+.from-l {
+    transform: translateX(-50%);
+}
+
+.from-r {
+    transform: translateX(50%);
+}

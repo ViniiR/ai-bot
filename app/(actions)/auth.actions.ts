@@ -31,7 +31,7 @@ export async function createSession(userName: string) {
 
 /**
  * checks if the current user's stored session is still valid on the database
-*/
+ */
 export async function checkIfSessionIsValid() {
     "use server";
     try {

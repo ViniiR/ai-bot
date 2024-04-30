@@ -26,12 +26,11 @@
         grid-template-rows: repeat(7, auto);
         height: 70%;
     }
+
     #background-image {
-        background-image: url("../\(assets\)/pexels-mountain.webp");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: right center;
-        background-color: black;
         display: inline-block;
         position: absolute;
         height: 120%;
@@ -39,6 +38,7 @@
         grid-column: 2;
         grid-row: 1 / 7;
     }
+
     .media-form > *:not(#background-image) {
         grid-column: 1;
     }

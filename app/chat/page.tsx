@@ -1,7 +1,12 @@
 import { redirect } from "next/navigation";
 import { checkIfSessionIsValid } from "../(actions)/auth.actions";
-import Chat from "./Chat";
-import "./style.css";
+import dynamic from "next/dynamic";
+import Loading from "./loading";
+
+const DynamicChat = dynamic(() => import("./Chat"), {
+    loading: () => <Loading></Loading>,
+    ssr: false,
+});
 
 export default async function ChatPage() {
     const isValidSession = await checkIfSessionIsValid();
@@ -10,5 +15,5 @@ export default async function ChatPage() {
         redirect("/signup");
     }
 
-    return <Chat></Chat>;
+    return <DynamicChat></DynamicChat>;
 }
