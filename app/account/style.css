@@ -1,0 +1,31 @@
+.min-h-half-screen {
+    min-height: 50vh;
+}
+@media (min-width: 768px) {
+    .align-center-no-jumping-when-changecn-button-click {
+        position: absolute;
+        top: 90px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .align-center-no-jumping-when-changecn-button-click {
+        position: absolute;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.align-center-no-jumping-when-changecn-button-click-confirm {
+    position: absolute;
+    top: -130px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hide-menu {
+    display: none;
+}

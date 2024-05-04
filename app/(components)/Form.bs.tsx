@@ -1,11 +1,12 @@
+"use client";
 import { UserData } from "@/types/types";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FormikProps } from "formik";
 import FormSection from "./FormSection.bs";
 import Link from "next/link";
-import "./form-style.css";
 import LoginBackground from "@assets/mountainforest.webp";
 import SignUpBackground from "@assets/waterfall.webp";
+import "./form.css";
 
 interface FormProps {
     children?: JSX.Element | JSX.Element[] | string;

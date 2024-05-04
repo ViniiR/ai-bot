@@ -9,7 +9,6 @@ import HoverText from "./HoverText";
 import OpenPassword from "../(assets)/eye-crossed_3917021.svg";
 import ClosedPassword from "../(assets)/eye_3917052.svg";
 import Image from "next/image";
-import "./form-style.css";
 
 interface FormSectionProps {
     children?: JSX.Element | JSX.Element[] | string;

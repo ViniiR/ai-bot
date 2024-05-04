@@ -1,3 +1,4 @@
+
 :root {
     --dark-darker: #656256;
     --dark-mid: #686963;
@@ -79,7 +80,7 @@
 .theme-switch::before {
     content: "";
     pointer-events: auto;
-    background-image: url("../\(assets\)/bx-moon.svg");
+    background-image: url("../(assets)/bx-moon.svg");
     background-size: cover;
     background-position: center center;
     right: 2px;

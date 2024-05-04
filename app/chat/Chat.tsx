@@ -1,15 +1,18 @@
 "use client";
 
-import { useChat } from "ai/react";
+import Link from "next/link";
 import HoverText from "../(components)/HoverText";
 import Msg from "../(components)/Message";
-import { useContext, useState, createContext, useRef, useEffect } from "react";
 import Image from "next/image";
 import VChatLogo from "../(assets)/vchataifinal.svg";
-import { useRouter } from "next/navigation";
-import "./style.css";
+import Dropdown from "@/app/(components)/Dropdown";
+import { useContext, useState, createContext, useRef, useEffect } from "react";
+import { useChat } from "ai/react";
+import "./chat.css";
 
-const ThemeContext = createContext(localStorage.getItem("theme") === "dark");
+export const ThemeContext = createContext(
+    localStorage.getItem("theme") === "dark",
+);
 
 export default function Chat() {
     const { messages, handleInputChange, handleSubmit, input } = useChat({
@@ -17,8 +20,6 @@ export default function Chat() {
             setErr(err);
         },
     });
-
-    const router = useRouter();
 
     const [theme, setTheme] = useState(useContext(ThemeContext));
 
@@ -42,27 +43,53 @@ export default function Chat() {
                 className={`h-screen w-screen flex flex-col justify-between ${theme ? "dark-1 dark-text" : "light-1 light-text"}`}
             >
                 <header className="main-header text-white flex-row flex gap-1 p-2 bg-darker items-center tems-center w-screen h-12 justify-between md:h-20 lg:p-4">
-                    <div
-                        onClick={() => {
-                            router.push("/");
-                        }}
-                        className="flex items-center w-max cursor-pointer text-hover-parent relative"
-                    >
-                        <Image
-                            src={VChatLogo}
-                            width={20}
-                            height={20}
-                            className="w-16 h-full md:w-20"
-                            alt="Website logo, VChat - AI in styled font"
-                        ></Image>
-                        <span className=" h-full w-10 font-bold text-lg flex items-center justify-center">
-                            - 0.1
-                        </span>
-                        <HoverText
-                            content="Home"
-                            className={`absolute top-10 left-10 text-hover ${theme ? "dark-2" : "light-2"}`}
-                        ></HoverText>
-                    </div>
+                    <section className="flex justify-between min-w-32 items-center">
+                        <Link
+                            href="/"
+                            className="flex items-center w-max cursor-pointer text-hover-parent no-underline"
+                        >
+                            <Image
+                                src={VChatLogo}
+                                width={20}
+                                height={20}
+                                className="w-16 h-full md:w-20"
+                                alt="Website logo, VChat - AI in styled font"
+                            ></Image>
+                            <span className=" h-full w-10 font-bold text-lg flex items-center justify-center">
+                                - 0.1
+                            </span>
+                            <HoverText
+                                content="Home"
+                                className={`absolute top-10 left-10 text-hover ${theme ? "dark-2" : "light-2"}`}
+                            ></HoverText>
+                        </Link>
+                        <Dropdown className="">
+                            <Link
+                                href={"/login"}
+                                className={`text-sm p-2 text-center no-underline  ${theme ? "dark-2 hover:bg-stone-500" : "light-2 hv-l-2 hover:bg-yellow-50"}`}
+                            >
+                                Change Account
+                            </Link>
+                            <Link
+                                href={"/signup"}
+                                className={`text-sm p-2 text-center no-underline  ${theme ? "dark-2 hover:bg-stone-500" : "light-2 hv-l-2 hover:bg-yellow-50"}`}
+                            >
+                                New Account
+                            </Link>
+                            <Link
+                                href={"/account"}
+                                className={`text-sm p-2 text-center no-underline  ${theme ? "dark-2 hover:bg-stone-500" : "light-2 hv-l-2 hover:bg-yellow-50"}`}
+                            >
+                                Manage Account
+                            </Link>
+                            <Link
+                                href={"/credits"}
+                                className={`text-sm p-2 text-center no-underline  ${theme ? "dark-2 hover:bg-stone-500" : "light-2 hv-l-2 hover:bg-yellow-50"}`}
+                            >
+                                Credits
+                            </Link>
+                        </Dropdown>
+                    </section>
                     <div className="cursor-pointer w-11 theme-switch h-full flex items-center justify-center text-hover-parent">
                         <input
                             type="checkbox"

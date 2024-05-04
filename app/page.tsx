@@ -6,8 +6,10 @@ import BgImage from "@assets/bgaichatmooned.svg";
 import ShowOnScroll from "./(components)/ShowOnScroll";
 import WThemeShowcase from "@assets/bx-sun.svg";
 import DThemeShowcase from "@assets/bx-moon.svg";
+import { checkIfSessionIsValid } from "./(actions)/auth.actions";
 
-export default function Home() {
+export default async function Home() {
+    const isLoggedIn = await checkIfSessionIsValid();
     return (
         <main
             className="h-screen w-screen text-white bg-black flex-col flex justify-between items-center overflow-y-scroll"
@@ -19,31 +21,46 @@ export default function Home() {
                 backgroundAttachment: "fixed",
             }}
         >
-            <header className="h-16 p-2 w-full bg-black fixed z-10 top-0 flex justify-between items-center backdrop-blur-sm bg-opacity-35">
+            <header className="h-16 p-2 w-full bg-black sticky z-10 top-0 flex justify-between items-center backdrop-blur-sm bg-opacity-35">
                 <Image
                     className="h-10 w-max cursor-pointer"
                     src={Logo}
                     alt="VChat - AI in styled font"
                 ></Image>
                 <section className="w-max flex justify-between items-center p-3 gap-2 text-sm">
-                    <Link
-                        href={"/login"}
-                        className="w-max p-1 border border-gray-400 rounded-sm text-white cursor-pointer flex gap-1 items-center text-nowrap hover:text-neutral-200 hover:bg-stone-900"
-                    >
-                        Login
-                        <Image src={LinkIcon} alt="Icon for a link"></Image>
-                    </Link>
-                    <Link
-                        href={"/signup"}
-                        className="w-max cursor-pointer p-1 border border-gray-400 rounded-sm text-white gap-1 flex items-center text-nowrap hover:text-neutral-200 hover:bg-stone-900"
-                    >
-                        Sign Up
-                        <Image
-                            src={LinkIcon}
-                            className="w-full h-full"
-                            alt="Icon for a link"
-                        ></Image>
-                    </Link>
+                    {isLoggedIn ? (
+                        <Link
+                            href={"/account"}
+                            className="w-max p-1 border border-gray-400 rounded-sm text-white cursor-pointer flex gap-1 items-center text-nowrap hover:text-neutral-200 hover:bg-stone-900"
+                        >
+                            My Account
+                            <Image src={LinkIcon} alt="Icon for a link"></Image>
+                        </Link>
+                    ) : (
+                        <>
+                            <Link
+                                href={"/login"}
+                                className="w-max p-1 border border-gray-400 rounded-sm text-white cursor-pointer flex gap-1 items-center text-nowrap hover:text-neutral-200 hover:bg-stone-900"
+                            >
+                                Login
+                                <Image
+                                    src={LinkIcon}
+                                    alt="Icon for a link"
+                                ></Image>
+                            </Link>
+                            <Link
+                                href={"/signup"}
+                                className="w-max cursor-pointer p-1 border border-gray-400 rounded-sm text-white gap-1 flex items-center text-nowrap hover:text-neutral-200 hover:bg-stone-900"
+                            >
+                                Sign Up
+                                <Image
+                                    src={LinkIcon}
+                                    className="w-full h-full"
+                                    alt="Icon for a link"
+                                ></Image>
+                            </Link>
+                        </>
+                    )}
                 </section>
             </header>
             <section className="w-full p-2 max-w-screen-third pb-4 min-desktop-h pt-10">
@@ -64,11 +81,8 @@ export default function Home() {
                         My own AI chatting website, feel welcome to use it.
                     </strong>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Debitis dolores molestiae minus quis modi atque
-                        illo quae, non quos id, porro corrupti culpa qui
-                        perferendis nesciunt facilis. Cupiditate, aliquid
-                        voluptas?
+                        Using Vercel&apos;s AI SDK and google&apos;s Gemma-7b-it
+                        LLM i&apos;ve created this AI chatting website
                     </p>
                 </article>
                 <article className="min-h-32 grid grid-rows-2 grid-cols-2 overflow-x-hidden auto-cols-fr backdrop-blur-sm rounded justify-between place-items-center gap-1 w-full lg:w-2/3">
@@ -120,40 +134,40 @@ export default function Home() {
             </main>
             <footer className="p-4 bg-stone-900 grid grid-cols-3 grid-rows-3 place-items-center w-full min-h-40 text-sm text-stone-400">
                 <Link
-                    href="/info"
+                    href="https://www.github.com/viniir"
                     className="col-start-1 row-start-1 no-underline text-stone-400"
                 >
-                    Who made this?
+                    Github
                 </Link>
                 <Link
                     href="/chat"
                     className="col-start-2 row-start-1 no-underline text-stone-400"
                 >
-                    VChat - AI
+                    Chat
                 </Link>
                 <Link
-                    href=""
+                    href="https://www.bibliaonline.com.br"
                     className="col-start-3 row-start-1 no-underline text-stone-400"
                 >
-                    changeme
+                    Filler
                 </Link>
                 <Link
-                    href=""
+                    href="/account"
                     className="col-start-1 row-start-2 no-underline text-stone-400"
                 >
-                    changeme
+                    My Account
                 </Link>
                 <Link
-                    href=""
+                    href="/login"
                     className="col-start-2 row-start-2 no-underline text-stone-400"
                 >
                     Login
                 </Link>
                 <Link
-                    href=""
+                    href="/signup"
                     className="col-start-3 row-start-2 no-underline text-stone-400"
                 >
-                    SignUp
+                    Sign Up
                 </Link>
                 <Link
                     href="/credits"

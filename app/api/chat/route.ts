@@ -9,11 +9,6 @@ export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
     const { messages } = await request.json();
-    // if ((messages[0].role as string) === "user") {
-    //     (messages[0].content as string) +=
-    //         " your answer prompt may not include end nor end of session nor prompt nor end of text blocks surrounded by <||>";
-    // };
-    // console.log(messages);
 
     const res = HF.textGenerationStream({
         model: "google/gemma-1.1-7b-it",
