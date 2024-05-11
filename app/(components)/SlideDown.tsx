@@ -2,7 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import "./slide.css";
-import { FormChangeName, FormChangePassword } from "./FormChangeName";
+import { FormChangeName, FormChangePassword } from "./FormChanges";
+import Image from "next/image";
+import ChevronUp from "@assets/bxs-chevron-up.svg";
+import ChevronDown from "@assets/bxs-chevron-down.svg";
 
 interface SlideDownProps {
     content: string;
@@ -32,7 +35,10 @@ export default function SlideDown(p: SlideDownProps) {
 
                     numericHeight = numericHeight + 10;
                     formRef.current.style.height = numericHeight + "px";
-                    formRef.current.classList.remove("hide-form");
+                    setTimeout(() => {
+                        if (!formRef.current) return;
+                        formRef.current.classList.remove("hide-form");
+                    }, 50);
                     if (numericHeight <= 110) {
                         scroll(true);
                     }
@@ -64,9 +70,16 @@ export default function SlideDown(p: SlideDownProps) {
                 onClick={() => {
                     setIsHidden(!isHidden);
                 }}
-                className={p.btnClassName}
+                className={
+                    p.btnClassName + "  flex items-center justify-center "
+                }
             >
-                {p.content}
+                <span className="w-full text-center ps-5">{p.content}</span>
+                <Image
+                    alt="Arrow Image"
+                    className=""
+                    src={isHidden ? ChevronUp : ChevronDown}
+                ></Image>
             </button>
             {p.isPassword ? (
                 <FormChangePassword fref={formRef}></FormChangePassword>

@@ -26,17 +26,17 @@ export default function ClickConfirm(p: ClickConfirmProps) {
                 onClick={() => {
                     setIsHidden(!isHidden);
                 }}
-                className="h-10 rounded bg-blue-600 cursor-pointer text-center text-white hover:bg-blue-700"
+                className="h-10 rounded bg-red-600 cursor-pointer text-center text-white hover:bg-red-700"
             >
                 {p.text}
             </button>
             <main
                 ref={menuRef}
-                className="w-screen hide-menu h-screen bg-opacity-50 bg-black grid place-items-center align-center-no-jumping-when-changecn-button-click-confirm z-20 "
+                className="h-screen hide-menu w-screen bg-black grid top-0 left-0 absolute place-items-center text-black bg-opacity-50"
             >
                 <section className="bg-zinc-200 p-2 rounded grid place-items-end gap-1 w-1/2 md:max-w-96">
                     <big className="w-full flex flex-col justify-center items-center text-center text-base h-20">
-                        Are you sure you want to{" "}
+                        Are you sure you want to
                         <span className="font-semibold inline-block">
                             {p.text} ?
                         </span>
@@ -48,7 +48,7 @@ export default function ClickConfirm(p: ClickConfirmProps) {
                         }}
                         className="bg-blue-600 rounded w-full h-10 text-center text-white hover:bg-blue-700"
                     >
-                        Cancel {p.text}
+                        Cancel
                     </button>
                 </section>
             </main>

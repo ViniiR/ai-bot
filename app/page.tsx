@@ -63,7 +63,7 @@ export default async function Home() {
                     )}
                 </section>
             </header>
-            <section className="w-full p-2 max-w-screen-third pb-4 min-desktop-h pt-10">
+            <section className="w-full p-2 pb-4 md:max-w-screen-sm min-desktop-h pt-10">
                 <h1 className="text-xl font-bold w-full main-title text-center h-80 grid items-center ">
                     Introducing VChat - AI
                 </h1>

@@ -6,6 +6,8 @@ import Msg from "../(components)/Message";
 import Image from "next/image";
 import VChatLogo from "../(assets)/vchataifinal.svg";
 import Dropdown from "@/app/(components)/Dropdown";
+import InfoIcon from "@assets/Info-icon.svg";
+import CreditsIcon from "@assets/Credits.svg";
 import { useContext, useState, createContext, useRef, useEffect } from "react";
 import { useChat } from "ai/react";
 import "./chat.css";
@@ -65,28 +67,26 @@ export default function Chat() {
                         </Link>
                         <Dropdown className="">
                             <Link
-                                href={"/login"}
-                                className={`text-sm p-2 text-center no-underline  ${theme ? "dark-2 hover:bg-stone-500" : "light-2 hv-l-2 hover:bg-yellow-50"}`}
-                            >
-                                Change Account
-                            </Link>
-                            <Link
-                                href={"/signup"}
-                                className={`text-sm p-2 text-center no-underline  ${theme ? "dark-2 hover:bg-stone-500" : "light-2 hv-l-2 hover:bg-yellow-50"}`}
-                            >
-                                New Account
-                            </Link>
-                            <Link
                                 href={"/account"}
-                                className={`text-sm p-2 text-center no-underline  ${theme ? "dark-2 hover:bg-stone-500" : "light-2 hv-l-2 hover:bg-yellow-50"}`}
+                                className={`text-sm items-center flex justify-between gap-2 p-2 text-center no-underline  ${theme ? "dark-2 hover:bg-stone-500" : "light-2 hv-l-2 hover:bg-yellow-50"}`}
                             >
-                                Manage Account
+                                <span>Manage Account</span>
+                                <Image
+                                    src={InfoIcon}
+                                    alt="I icon for information"
+                                    className="w-4"
+                                ></Image>
                             </Link>
                             <Link
                                 href={"/credits"}
-                                className={`text-sm p-2 text-center no-underline  ${theme ? "dark-2 hover:bg-stone-500" : "light-2 hv-l-2 hover:bg-yellow-50"}`}
+                                className={`text-sm items-center flex justify-between gap-2 p-2 text-center no-underline  ${theme ? "dark-2 hover:bg-stone-500" : "light-2 hv-l-2 hover:bg-yellow-50"}`}
                             >
-                                Credits
+                                <span>Credits</span>
+                                <Image
+                                    src={CreditsIcon}
+                                    alt="I icon for information"
+                                    className="w-4"
+                                ></Image>
                             </Link>
                         </Dropdown>
                     </section>
