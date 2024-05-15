@@ -46,9 +46,10 @@ export function FormChangeName(p: FCNProps) {
                 value={formik.values.userName}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
+                autoFocus={true}
             />
             <input
-                className="w-full text-center text-sm px-2 bg-blue-500 text-white h-10 rounded-b hover:bg-green-700 cursor-pointer"
+                className="w-full bg-blue-500 text-white h-10 rounded-b hover:bg-blue-600 cursor-pointer"
                 type="submit"
                 name="submit"
                 id="submit-2"
@@ -103,9 +104,10 @@ export function FormChangePassword(p: FCNProps) {
                 value={formik.values.password}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
+                autoFocus={true}
             />
             <input
-                className="w-full bg-blue-500 text-white h-10 rounded-b hover:bg-green-700 cursor-pointer"
+                className="w-full bg-blue-500 text-white h-10 rounded-b hover:bg-blue-600 cursor-pointer"
                 type="submit"
                 name="submit"
                 id="submit"

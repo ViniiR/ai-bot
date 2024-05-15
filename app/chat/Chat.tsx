@@ -62,7 +62,7 @@ export default function Chat() {
                             </span>
                             <HoverText
                                 content="Home"
-                                className={`absolute top-10 left-10 text-hover ${theme ? "dark-2" : "light-2"}`}
+                                className={`absolute top-14 left-10 text-hover ${theme ? "dark-2" : "light-2"}`}
                             ></HoverText>
                         </Link>
                         <Dropdown className="">

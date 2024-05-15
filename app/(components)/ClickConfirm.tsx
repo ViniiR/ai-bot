@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 interface ClickConfirmProps {
     text: string;
     confirm: JSX.Element;
+    className: string
 }
 
 export default function ClickConfirm(p: ClickConfirmProps) {
@@ -26,7 +27,7 @@ export default function ClickConfirm(p: ClickConfirmProps) {
                 onClick={() => {
                     setIsHidden(!isHidden);
                 }}
-                className="h-10 rounded bg-red-600 cursor-pointer text-center text-white hover:bg-red-700"
+                className={p.className}
             >
                 {p.text}
             </button>
