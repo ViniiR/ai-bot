@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 interface ClickConfirmProps {
     text: string;
     confirm: JSX.Element;
-    className: string
+    className: string;
 }
 
 export default function ClickConfirm(p: ClickConfirmProps) {

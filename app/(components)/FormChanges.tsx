@@ -49,7 +49,7 @@ export function FormChangeName(p: FCNProps) {
                 autoFocus={true}
             />
             <input
-                className="w-full bg-blue-500 text-white h-10 rounded-b hover:bg-blue-600 cursor-pointer"
+                className="w-full bg-blue-500 text-white h-10 rounded-b-sm hover:bg-blue-600 cursor-pointer"
                 type="submit"
                 name="submit"
                 id="submit-2"
@@ -107,7 +107,7 @@ export function FormChangePassword(p: FCNProps) {
                 autoFocus={true}
             />
             <input
-                className="w-full bg-blue-500 text-white h-10 rounded-b hover:bg-blue-600 cursor-pointer"
+                className="w-full bg-blue-500 text-white h-10 rounded-b-sm hover:bg-blue-600 cursor-pointer"
                 type="submit"
                 name="submit"
                 id="submit"

@@ -74,7 +74,7 @@ export default function SlideDown(p: SlideDownProps) {
                     p.btnClassName + "  flex items-center justify-center "
                 }
             >
-                <span className="w-full text-center ps-5">{p.content}</span>
+                <span className="w-full text-start ps-2">{p.content}</span>
                 <Image
                     alt="Arrow Image"
                     className=""

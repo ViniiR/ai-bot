@@ -24,10 +24,9 @@ export default async function page() {
         redirect("/signup");
     }
 
-    //TODO
     return (
-        <main className="min-h-screen w-screen h-screen flex flex-col gap-3 p-3 bg-black items-center md:gap-20">
-            <header className="h-10 w-full p-2 flex items-center text-white">
+        <main className="min-h-screen w-screen h-screen flex flex-col bg-black items-center md:gap-20">
+            <header className="h-10 border-b border-b-white w-full p-8 ps-4 flex items-center text-white">
                 <section className="flex justify-between min-w-32 items-center">
                     <Link
                         href="/"
@@ -51,44 +50,44 @@ export default async function page() {
                 </section>
             </header>
             <section
-                className="w-full h-full bg-stone-500 p-2 text-white flex flex-col gap-1 
-                md:max-w-xl md:h-max"
+                className="w-full h-full bg-black text-white flex flex-col gap-1 
+                md:max-w-xl md:h-max p-2"
             >
-                <section className="management-grid rounded bg-stone-700 p-2 w-full gap-y-1 gap-x-1">
+                <section className="management-grid rounded-sm bg-stone-700 p-2 w-full gap-y-1 gap-x-1">
                     <Image
                         className="rounded-lg p-1 bg-stone-400 max-w-28 max-h-full h-full w-full management-c-pfp min-w-20"
                         src={UserPfp}
                         alt="User profile picture"
                     ></Image>
                     <big className="w-max grid items-center p-2 management-c-nm">
-                        Welcome, {userInformation.userName}!
+                        Hello, {userInformation.userName}!
                     </big>
                 </section>
-                <section className="w-full rounded bg-stone-700 p-2 flex flex-col gap-1">
+                <section className="w-full flex flex-col gap-1">
+                    <SlideDown
+                        isPassword={false}
+                        className="w-full grid place-items-center"
+                        btnClassName="rounded-sm shadow bg-stone-600 text-white w-full p-2 hover:bg-stone-700"
+                        content="Change UserName"
+                    ></SlideDown>
+                    <SlideDown
+                        isPassword={true}
+                        className="w-full grid place-items-center"
+                        btnClassName="rounded-sm shadow bg-stone-600 text-white w-full p-2 hover:bg-stone-700"
+                        content="Change Password"
+                    ></SlideDown>
                     <form
                         action={logOut}
                         className="w-full grid place-items-center"
                     >
                         <input
                             type="submit"
-                            className="bg-stone-600 shadow border rounded-sm border-black text-white w-full p-2 hover:bg-stone-700 cursor-pointer"
+                            className="bg-blue-600 shadow rounded-sm text-white w-full p-2 hover:bg-blue-700 cursor-pointer"
                             value="Log Out"
                         />
                     </form>
-                    <SlideDown
-                        isPassword={false}
-                        className="w-full grid place-items-center"
-                        btnClassName="border rounded-sm border-black shadow bg-stone-600 text-white w-full p-2 hover:bg-stone-700"
-                        content="Change UserName"
-                    ></SlideDown>
-                    <SlideDown
-                        isPassword={true}
-                        className="w-full grid place-items-center"
-                        btnClassName="border rounded-sm border-black shadow bg-stone-600 text-white w-full p-2 hover:bg-stone-700"
-                        content="Change Password"
-                    ></SlideDown>
                     <ClickConfirm
-                        className="h-10 rounded-sm shadow border border-black bg-red-600 cursor-pointer text-center text-white hover:bg-red-700"
+                        className="h-10 rounded-sm shadow bg-red-600 cursor-pointer text-center text-white hover:bg-red-700"
                         confirm={
                             <form
                                 action={deleteAccount}
